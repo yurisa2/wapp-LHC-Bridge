@@ -4,7 +4,8 @@
 class lhc {
   public function __construct() 
   {
-    $this->LHCRestAPI = new LHCRestAPI(LHC_URL, LHC_USERNAME, LHC_KEY);
+    global $config; // FOr some reason, the production server gave up on defines.
+    $this->LHCRestAPI = new LHCRestAPI($config["url"], $config["user"], $config["key"]);
     
   }
   
