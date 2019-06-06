@@ -1,0 +1,7 @@
+<?php 
+
+$lhc_url_base = "https://www.waboxapp.com/api/";
+$lhc_username = "";
+$lhc_api_key = "";
+
+?>
