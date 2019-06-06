@@ -25,16 +25,12 @@ if($wapp["event"] == "message")
   $from_phone = $wapp["contact"]["uid"];
   $from_name = $wapp["contact"]["name"];
   $msg = $wapp["message"]["body"]["text"];
-  
-  $from_phone = '5511996660661';
-  $from_name = 'Tiozao do Zap';
-  $msg = 'manda Nudes';
-  
-  
-  var_dump($from_phone);
-  var_dump($from_name);
-  var_dump($msg);
-  // exit;
+
+  // 
+  // var_dump($from_phone);
+  // var_dump($from_name);
+  // var_dump($msg);
+  // // exit;
   
   $lhc = new lhc;
   
