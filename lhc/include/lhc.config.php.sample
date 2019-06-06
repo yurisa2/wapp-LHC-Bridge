@@ -1,7 +1,11 @@
 <?php 
 
-$lhc_url_base = "https://www.waboxapp.com/api/";
+$lhc_url_base = '';
 $lhc_username = "";
 $lhc_api_key = "";
+
+define("LHC_URL",$lhc_url_base);
+define("LHC_USERNAME",$lhc_username);
+define("LHC_KEY",$lhc_api_key);
 
 ?>
