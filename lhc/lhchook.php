@@ -31,9 +31,9 @@ if($wapp["event"] == "message")
   $msg = 'manda Nudes';
   
   
-  // var_dump($from_phone);
-  // var_dump($from_name);
-  // var_dump($msg);
+  var_dump($from_phone);
+  var_dump($from_name);
+  var_dump($msg);
   // exit;
   
   $lhc = new lhc;
