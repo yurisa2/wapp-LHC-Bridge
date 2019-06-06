@@ -18,15 +18,17 @@ include 'include/lhc.class.php';
 // "message[body][text]": "Hey! How are you doing?",
 // "message[ack]": 3
 
-if($_POST["event"] == "message")
+$wapp = $_POST;
+
+if($wapp["event"] == "message")
 {
-  $from_phone = $_POST["contact[uid]"];
-  $from_name = $_POST["contact[name]"];
-  $msg = $_POST["message[body][text]"];
+  $from_phone = $wapp["contact"]["uid"];
+  $from_name = $wapp["contact"]["name"];
+  $msg = $wapp["message"]["body"]["text"];
   
   
-  var_dump($_POST);
-  exit;
+  // var_dump($wapp);
+  // exit;
   
   $lhc = new lhc;
   
