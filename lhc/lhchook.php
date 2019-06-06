@@ -27,7 +27,9 @@ if($wapp["event"] == "message")
   $msg = $wapp["message"]["body"]["text"];
   
   
-  // var_dump($wapp);
+  var_dump($from_phone);
+  var_dump($from_name);
+  var_dump($msg);
   // exit;
   
   $lhc = new lhc;
