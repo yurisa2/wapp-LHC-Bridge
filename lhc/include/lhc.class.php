@@ -14,6 +14,8 @@ class lhc {
     
     $response = $this->LHCRestAPI->execute('chats', array());
     
+    var_dump($response);
+    
     foreach ($response->list as $key => $value) {
       
       if(is_object(json_decode($value->additional_data)[0]) && ($value->status == 0 || $value->status == 1) &&

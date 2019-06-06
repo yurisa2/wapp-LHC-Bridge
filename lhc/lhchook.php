@@ -1,8 +1,8 @@
 <?php
 ini_set('display_errors','on');
 
-include 'include/lhrestapi.php';
 include 'include/lhc.config.php';
+include 'include/lhrestapi.php';
 include 'include/lhc.class.php';
 
 // "event": "message",
@@ -26,10 +26,14 @@ if($wapp["event"] == "message")
   $from_name = $wapp["contact"]["name"];
   $msg = $wapp["message"]["body"]["text"];
   
+  $from_phone = '5511996660661';
+  $from_name = 'Tiozao do Zap';
+  $msg = 'manda Nudes';
   
-  var_dump($from_phone);
-  var_dump($from_name);
-  var_dump($msg);
+  
+  // var_dump($from_phone);
+  // var_dump($from_name);
+  // var_dump($msg);
   // exit;
   
   $lhc = new lhc;
