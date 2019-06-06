@@ -7,6 +7,8 @@ class lhc {
     global $config; // FOr some reason, the production server gave up on defines.
     $this->LHCRestAPI = new LHCRestAPI($config["url"], $config["user"], $config["key"]);
     
+      var_dump($config);
+    
   }
   
   
