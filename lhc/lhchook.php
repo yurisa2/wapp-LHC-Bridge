@@ -24,7 +24,14 @@ if($_POST["event"] == "message")
   $from_name = $_POST["contact[name]"];
   $msg = $_POST["message[body][text]"];
   
+  
+  var_dump($_POST);
+  exit;
+  
   $lhc = new lhc;
+  
+  
+  
   
   $lhc->send_msg_lhc($from_phone,$from_name,$msg);
 }
