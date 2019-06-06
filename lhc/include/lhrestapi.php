@@ -60,7 +60,7 @@ class LHCRestAPI {
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		@curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Some hostings produces wargning...
+		@curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false); // Some hostings produces wargning...
 		$content = curl_exec($ch);
 
 		return $content;
