@@ -24,7 +24,13 @@ if($wapp["event"] == "message")
 {
   $from_phone = $wapp["contact"]["uid"];
   $from_name = $wapp["contact"]["name"];
-  $msg = $wapp["message"]["body"]["text"];
+
+  if($wapp["message"]["type"] == "chat"  $msg = $wapp["message"]["body"]["text"];
+  
+  else {
+  $msg =   $wapp["message"]["body"]["caption"] . " - ";
+  $msg .=   $wapp["message"]["body"]["url"];
+  }
 
   // 
   // var_dump($from_phone);
