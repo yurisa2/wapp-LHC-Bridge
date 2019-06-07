@@ -26,7 +26,8 @@ if($wapp["event"] == "message")
   $from_name = $wapp["contact"]["name"];
 
   if($wapp["message"]["type"] == "chat")  $msg = $wapp["message"]["body"]["text"];
-  
+  elseif ($wapp["message"]["type"] == "vcard") $msg = $wapp["message"]["body"]["contact"] . $wapp["message"]["body"]["vcard"];
+  elseif ($wapp["message"]["type"] == "location") $msg = $wapp["message"]["body"]["name"] . $wapp["message"]["body"]["url"];
   else {
   $msg =   $wapp["message"]["body"]["caption"] . " - ";
   $msg .=   $wapp["message"]["body"]["url"];
