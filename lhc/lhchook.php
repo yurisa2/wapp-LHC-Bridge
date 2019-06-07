@@ -40,5 +40,6 @@ if($wapp["event"] == "message")
   $lhc->send_msg_lhc($from_phone,$from_name,$msg);
 }
 
+file_put_contents('lhchook.json',json_encod($_POST));
 
 ?>

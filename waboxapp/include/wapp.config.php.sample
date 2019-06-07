@@ -4,4 +4,8 @@ $wapp_url_base = "https://www.waboxapp.com/api/";
 $wapp_token = "";
 $wapp_phone_from = "";
 
+$config["url"] = $wapp_url_base;
+$config["token"] = $wapp_token;
+$config["phone"] = $wapp_phone_from;
+
 ?>
