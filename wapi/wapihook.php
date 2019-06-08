@@ -15,6 +15,8 @@ $incoming["time"] = $json_dec->data->Timestamp;
 $incoming["msgid"] = $json_dec->data->msgId;
 $incoming["type"] = $json_dec->msgInfo->msgType;
 
+$incoming["message_body"] = $json_dec->msgInfo->message; // DEBUG
+
 if($incoming["type"] == "text") {
     $incoming["message_body"] = $json_dec->msgInfo->message;
 }
