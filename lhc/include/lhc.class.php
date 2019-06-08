@@ -59,6 +59,8 @@ class lhc {
       'msg' => $msg
     ), array(), 'POST');
     
+    var_dump('send_msg_user-response.json', json_encode($response));
+    
   }
   
   public function send_msg_lhc($from_phone,$from_name,$msg) {
