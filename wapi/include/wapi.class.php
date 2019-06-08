@@ -1,27 +1,32 @@
 <?php
 
-class wapp {
-  public function __construct() 
+// echo __FILE__ . " INCLUDED";
+
+class wapi {
+  public function __construct($config) 
   {
-    
+  
+    $this->username = $config["username"];
+  
     $this->api = new RestClient([
-    'base_url' => $confg["url"], 
+    'base_url' => $config["url"], 
   ]);
   }
   
-  public function send_msg_wapp($phone,$msg,$custom_id) {
-    global $config;
-
-    $params["token"] = $config["token"];
-    $params["uid"] = $config["phone"];
-    $params["to"] = $phone;
-    $params["custom_uid"] = $custom_id;
-    $params["text"] = $msg;
-      
+  public function send_msg_wapi($phone,$msg) {
     
-    $result = $this->api->post("send/chat", $params);
-    // var_dump($result);
-    // file_put_contents('send_msg_wapp.txt',json_encode($params)); //DEBUG
+    $params["username"] = $this->username;
+    $params["jid"] = $phone."@s.whatsapp.net";
+    $params["message"] = base64_encode($msg);
+      
+      var_dump($params);
+  
+    $result = $this->api->post('sendTextMessage', json_encode($params), 
+    array('Content-Type' => 'application/json'));
+    //   echo "Depois do POST - RESULT";
+    // 
+    var_dump($result);
+    // file_put_contents('send_msg_wapi.txt',json_encode($params)); //DEBUG
   }
   
   
