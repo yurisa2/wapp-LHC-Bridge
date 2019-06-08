@@ -10,7 +10,7 @@ $from_LHC = json_decode($from_LHC['params']);
 
 $data = array();
 $data["phone"] = json_decode($from_LHC->chat->additional_data)[0]->value;
-$data["msg"] = $from_LHC->msg->name_support . ': ' . $from_LHC->msg->msg;
+$data["msg"] = '<i>' . $from_LHC->msg->name_support . ': </i>' . $from_LHC->msg->msg;
 
 $wapp = new wapi($config);
 $wapp->send_msg_wapi($data["phone"],$data["msg"]);

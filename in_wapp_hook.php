@@ -17,6 +17,7 @@ file_put_contents("in.wapp_hook-incoming.json",json_encode($incoming));
   $lhc = new lhc($config);
   $lhc->send_msg_lhc($incoming["user_from"],$incoming["user_from"],$incoming["message_body"]);
   
-// }
+// } //This was not supposed to be working, but I guess its denying from the other end.....whatever. Will try to activate to keep clean operation
+
 
 ?>
