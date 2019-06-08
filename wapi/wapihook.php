@@ -13,20 +13,20 @@ $incoming["user_from"] = $json_dec->RemoteJid;
 $incoming["msg_id"] = $json_dec->msgId;
 $incoming["time"] = $json_dec->data->Timestamp;
 $incoming["msgid"] = $json_dec->data->msgId;
-$incoming["type"] = $json_dec->msgInfo->msgType;
+$incoming["type"] = $json_dec->data->msgInfo->msgType;
 
-$incoming["message_body"] = $json_dec->msgInfo->message; // DEBUG
+$incoming["message_body"] = $json_dec->data->msgInfo->message; // DEBUG
 
 if($incoming["type"] == "text") {
-    $incoming["message_body"] = $json_dec->msgInfo->message;
+    $incoming["message_body"] = $json_dec->data->msgInfo->message;
 }
 
 if($incoming["type"] == "image" || $incoming["type"] == "video") {
-    $incoming["message_body"] = $json_dec->msgInfo->url .' - '. $json_dec->msgInfo->caption ;
+    $incoming["message_body"] = $json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
 }
 
 if($incoming["type"] == "audio") {
-    $incoming["message_body"] = $json_dec->msgInfo->url;
+    $incoming["message_body"] = $json_dec->data->msgInfo->url;
 }
 
 // 
