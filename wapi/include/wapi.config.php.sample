@@ -1,0 +1,11 @@
+<?php 
+
+$wapi_url_base = "https://in.wapi.xyz/";
+$wapi_token = "";
+$wapi_phone_from = "";
+
+$config["url"] = $wapi_url_base;
+$config["token"] = $wapi_token;
+$config["phone"] = $wapi_phone_from;
+
+?>

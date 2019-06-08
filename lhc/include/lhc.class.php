@@ -36,7 +36,7 @@ class lhc {
     
     return $retorno;
   }
-  public function start_new_chat($from_phone,$from_name,$msg) {
+  public function start_new_chat($from_phone,$from_name = "Cliente",$msg) {
     
     $response = $this->LHCRestAPI->execute('startchat', array(
       

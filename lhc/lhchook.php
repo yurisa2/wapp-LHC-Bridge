@@ -5,48 +5,18 @@ include 'include/lhc.config.php';
 include 'include/lhrestapi.php';
 include 'include/lhc.class.php';
 
-// "event": "message",
-// "token": "abcd1234",
-// "contact[uid]": "34666123456",
-// "contact[name]": "Peter",
-// "contact[type]": "user",
-// "message[dtm]": 1487082303,
-// "message[uid]": "62397B58E3E0B",
-// "message[cuid]": "",
-// "message[dir]": "i",
-// "message[type]": "chat",
-// "message[body][text]": "Hey! How are you doing?",
-// "message[ack]": 3
-
 $wapp = $_POST;
 
-if($wapp["event"] == "message")
-{
-  $from_phone = $wapp["contact"]["uid"];
-  $from_name = $wapp["contact"]["name"];
-
-  if($wapp["message"]["type"] == "chat")  $msg = $wapp["message"]["body"]["text"];
-  elseif ($wapp["message"]["type"] == "vcard") $msg = $wapp["message"]["body"]["contact"] . $wapp["message"]["body"]["vcard"];
-  elseif ($wapp["message"]["type"] == "location") $msg = $wapp["message"]["body"]["name"] . $wapp["message"]["body"]["url"];
-  else {
-  $msg =   $wapp["message"]["body"]["caption"] . " - ";
-  $msg .=   $wapp["message"]["body"]["url"];
-  }
-
-  // 
-  // var_dump($from_phone);
-  // var_dump($from_name);
-  // var_dump($msg);
-  // // exit;
   
   $lhc = new lhc;
-  
-  
-  
-  
-  $lhc->send_msg_lhc($from_phone,$from_name,$msg);
+
+  $lhc->send_msg_lhc($_POST["user_from"],$_POST["user_name"],$_POST["message_body"]);
 }
 
-file_put_contents('lhchook.json',json_encode($_POST));
+// var_dump($_POST);
+
+
+file_put_contents('lhchook.json',json_encode($wapp));
+
 
 ?>
