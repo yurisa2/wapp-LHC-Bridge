@@ -16,7 +16,8 @@ class wapi {
   public function send_msg_wapi($phone,$msg) {
     
     $params["username"] = $this->username;
-    $params["jid"] = $phone."@s.whatsapp.net";
+    // $params["jid"] = $phone."@s.whatsapp.net";
+    $params["jid"] = $phone;
     $params["message"] = base64_encode($msg);
       
       var_dump($params);
