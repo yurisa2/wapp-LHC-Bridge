@@ -20,7 +20,7 @@ if($incoming["type"] == "text") {
 }
 
 if($incoming["type"] == "image" || $incoming["type"] == "video") {
-    $incoming["message_body"] = $json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
+    $incoming["message_body"] = '<i>'. $json_dec->data->msgInfo->url .'</i> - '. $json_dec->data->msgInfo->caption ;
 }
 
 if($incoming["type"] == "audio") {
