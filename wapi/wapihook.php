@@ -9,13 +9,11 @@ $incoming["from_me"] = $json_dec->data->FromMe; // USE TO SELECT
 
 $incoming["dataType"] = $json_dec->dataType;
 $incoming["user_to"] = $json_dec->username;
-$incoming["user_from"] = $json_dec->RemoteJid;
+$incoming["user_from"] = $json_dec->data->RemoteJid;
 $incoming["msg_id"] = $json_dec->msgId;
 $incoming["time"] = $json_dec->data->Timestamp;
 $incoming["msgid"] = $json_dec->data->msgId;
 $incoming["type"] = $json_dec->data->msgInfo->msgType;
-
-$incoming["message_body"] = $json_dec->data->msgInfo->message; // DEBUG
 
 if($incoming["type"] == "text") {
     $incoming["message_body"] = $json_dec->data->msgInfo->message;
