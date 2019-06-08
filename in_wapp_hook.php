@@ -7,8 +7,11 @@ include 'include/lhc.class.php';
 
 $json = file_get_contents('php://input');
 
+file_put_contents("in.wapp_hook-json.json",$json);
+
 include 'wapi/wapihook.php';
 
+file_put_contents("in.wapp_hook-incoming.json",json_encode($incoming));
 
 if($incoming["from_me"] == 0) {  
   $lhc = new lhc;
