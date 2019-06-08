@@ -13,9 +13,9 @@ include 'wapi/wapihook.php';
 
 file_put_contents("in.wapp_hook-incoming.json",json_encode($incoming));
 
-if($incoming["from_me"] == 0) {  
-  $lhc = new lhc;
+// if($incoming["from_me"] == 0) {  
+  $lhc = new lhc(config);
   $lhc->send_msg_lhc($incoming["user_from"],$incoming["user_from"],$incoming["message_body"]);
-}
+// }
 
 ?>
