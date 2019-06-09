@@ -13,10 +13,14 @@ $data["phone"] = json_decode($from_LHC->chat->additional_data)[0]->value;
 $data["msg"] = $from_LHC->msg->name_support . ': ' . $from_LHC->msg->msg;
 
 $wapp = new wapi($config);
-$wapp->send_msg_wapi($data["phone"],$data["msg"]);
+$send = $wapp->send_msg_wapi($data["phone"],$data["msg"]);
 // var_dump($from_LHC); //DEBUG
 
+
+
+
 file_put_contents('wapi_post.json',$_POST);
+file_put_contents('wapi_send.json',json_encode($send));
 // file_put_contents('wapi_data.json',json_encode($data));
 
 ?>
