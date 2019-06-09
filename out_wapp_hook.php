@@ -22,7 +22,7 @@ if($_POST["debug"] == true) {
 $wapp = new wapi($config);
 $send = $wapp->send_msg_wapi($data["phone"],$data["msg"]);
 
-if($_POST["debug"] == true) var_dump($send);
+if($_POST["debug"] == true)echo '<pre>'; var_dump($send);
 
 
 file_put_contents('wapi_post.json',$_POST);
