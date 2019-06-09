@@ -26,7 +26,7 @@ class wapi {
     array('Content-Type' => 'application/json'));
     //   echo "Depois do POST - RESULT";
     // 
-    // var_dump($result);
+    var_dump($result);
     // file_put_contents('send_msg_wapi.txt',json_encode($params)); //DEBUG
     
     
