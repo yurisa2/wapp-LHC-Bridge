@@ -13,7 +13,17 @@ class wapi {
   ]);
   }
   
+  public function login_wapi() {
+    $params["username"] = $this->username;
+
+    $result = $this->api->get('sendTextMessage', json_encode($params), 
+    array('Content-Type' => 'application/json'));
+    
+    return $result;
+  }
+  
   public function send_msg_wapi($phone,$msg) {
+    $this->login_wapi();
     
     $params["username"] = $this->username;
     // $params["jid"] = $phone."@s.whatsapp.net";
