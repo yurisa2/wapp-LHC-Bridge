@@ -33,6 +33,7 @@ $send = $wapp->send_msg_wapi($data["phone"],$data["msg"]);
 if($_POST["debug"] == true) echo '<pre>'; var_dump($send);
 
 if(json_decode($send->response,true)["error"] == 1)  {
+  $lhc = new lhc($config_lhc);
   $lhc->send_msg_lhc($data["phone"],$data["phone"],json_decode($send->response,true)["message"]);
 
   if($_POST["debug"] == true)  var_dump(json_decode($send->response,true)["message"]);
