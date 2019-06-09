@@ -20,14 +20,15 @@ class wapi {
     $params["jid"] = $phone;
     $params["message"] = base64_encode($msg);
       
-      var_dump($params);
+      // var_dump($params);
   
     $result = $this->api->post('sendTextMessage', json_encode($params), 
     array('Content-Type' => 'application/json'));
     //   echo "Depois do POST - RESULT";
     // 
-    var_dump($result);
+    // var_dump($result);
     // file_put_contents('send_msg_wapi.txt',json_encode($params)); //DEBUG
+    file_put_contents('send_msg_wapi-result.txt',json_encode($result)); //DEBUG
     
     
     return $result;
