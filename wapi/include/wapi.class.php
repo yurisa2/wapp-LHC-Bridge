@@ -28,7 +28,7 @@ class wapi {
     // 
     // var_dump($result);
     // file_put_contents('send_msg_wapi.txt',json_encode($params)); //DEBUG
-    file_put_contents('send_msg_wapi-result.txt',serialize($result)); //DEBUG
+    // file_put_contents('send_msg_wapi-result.txt',serialize($result)); //DEBUG
     
     
     return $result;

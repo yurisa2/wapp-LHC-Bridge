@@ -24,9 +24,10 @@ $send = $wapp->send_msg_wapi($data["phone"],$data["msg"]);
 
 if($_POST["debug"] == true)echo '<pre>'; var_dump($send);
 
+if(json_decode($send->response,true)["error"] == 1) var_dump(json_decode($send->response,true)["message"]);
 
 file_put_contents('wapi_post.json',$_POST);
-file_put_contents('wapi_send.json',json_encode($send));
+file_put_contents('wapi_send.json',serialize($send));
 // file_put_contents('wapi_data.json',json_encode($data));
 
 ?>
