@@ -12,11 +12,17 @@ $data = array();
 $data["phone"] = json_decode($from_LHC->chat->additional_data)[0]->value;
 $data["msg"] = $from_LHC->msg->name_support . ': ' . $from_LHC->msg->msg;
 
+if($_POST["debug"] == true) {
+  $data["phone"] = $_POST["phone"];
+  $data["msg"] = $_POST["msg"];
+
+}
+
+
 $wapp = new wapi($config);
 $send = $wapp->send_msg_wapi($data["phone"],$data["msg"]);
-// var_dump($from_LHC); //DEBUG
 
-
+if($_POST["debug"] == true) var_dump($send);
 
 
 file_put_contents('wapi_post.json',$_POST);
