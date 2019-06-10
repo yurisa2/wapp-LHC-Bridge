@@ -20,13 +20,17 @@ if($incoming["from_me"] == 0) {
   $phone_only = $arr[0];  
   
 $dbh = new PDO('mysql:host='.$s.';dbname='.$d, $u, $p);
+$sql = "SELECT * FROM bookmarks where phone = '$phone_only'";
   
-  $sql = "SELECT * FROM bookmarks where phone = '$phone_only'";
+$sth = $dbh->prepare($sql);
+$sth->execute();
+
+
+
+$result = $sth->fetch(PDO::FETCH_ASSOC);
   
-  $res = $dbh->query($sql);
-  file_put_contents("res-mysql.json",serialize($res));
+  file_put_contents("res-mysql.json",serialize($result));
   file_put_contents("res-sql.json",serialize($sql));
-  file_put_contents("res-pdo.json",serialize($dbh));
   
   $lhc = new lhc($config_lhc);
   $lhc->send_msg_lhc($incoming["user_from"],$incoming["user_from"],$incoming["message_body"]);
