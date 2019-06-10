@@ -24,9 +24,9 @@ if($incoming["type"] == "image" || $incoming["type"] == "video") {
     $imgs = file_get_contents("https://in.wapi.xyz/".$json_dec->data->msgInfo->url);
     
     file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
-    file_put_contents("media-URL.txt",$json_dec->data->msgInfo->url);
   
-    $incoming["message_body"] = $json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
+    $incoming["message_body"] = "[url=".__FILE__.$json_dec->data->msgInfo->url]."]IMAGEM ". $json_dec->data->msgInfo->caption . "[/url]";
+    // $incoming["message_body"] = __FILE__.$json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
 }
 
 if($incoming["type"] == "audio") {
