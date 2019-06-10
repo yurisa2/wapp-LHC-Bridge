@@ -14,6 +14,18 @@ include 'wapi/wapihook.php';
 file_put_contents("in.wapp_hook-incoming.json",json_encode($incoming));
 
 if($incoming["from_me"] == 0) {  
+  
+  
+  $arr = explode("@", $incoming["user_from"]);
+  $phone_only = $arr[0];  
+  
+$dbh = new PDO('mysql:host='.$s.';dbname='.$d, $u, $p);
+  
+  $sql = "SELECT * FROM bookmarks where phone like '%$phone_only%'";
+  
+  $res = $dbh->query($sql);
+  file_put_contents("res-mysql.json",serialize($res));
+  
   $lhc = new lhc($config_lhc);
   $lhc->send_msg_lhc($incoming["user_from"],$incoming["user_from"],$incoming["message_body"]);
   
