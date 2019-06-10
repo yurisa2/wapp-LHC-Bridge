@@ -2,7 +2,7 @@
 
 // $teste = file_get_contents('php://input');
 
-// $json = "{\"data\":{\"FromMe\":0,\"RemoteJid\":\"551150342227@s.whatsapp.net\",\"Status\":1,\"Timestamp\":1560000972,\"msgId\":\"3EB06EC4FC4B2A2F9247\",\"msgInfo\":{\"message\":\"alternated\",\"msgType\":\"text\"},\"username\":\"5511996660661\"},\"dataType\":\"msg\",\"username\":\"5511996660661\"}";
+// $json = "{"data":{"FromMe":0,"RemoteJid":"551150342227@s.whatsapp.net","Status":1,"Timestamp":1560000972,"msgId":"3EB06EC4FC4B2A2F9247","msgInfo":{"message":"alternated","msgType":"text"},"username":"5511996660661"},"dataType":"msg","username":"5511996660661"}";
 $json_dec = json_decode($json);
 
 $incoming["from_me"] = $json_dec->data->FromMe; // USE TO SELECT
@@ -25,7 +25,7 @@ if($incoming["type"] == "image" || $incoming["type"] == "video") {
     
     file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
   
-    $incoming["message_body"] = "[url=$json_dec->data->msgInfo->url]IMAGEM  $json_dec->data->msgInfo->caption[/url]";
+    $incoming["message_body"] = "[url=".$json_dec->data->msgInfo->url."]IMAGEM[/url]";
     // $incoming["message_body"] = __FILE__.$json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
   
     
