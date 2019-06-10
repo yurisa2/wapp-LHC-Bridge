@@ -21,7 +21,7 @@ if($incoming["from_me"] == 0) {
   
 $dbh = new PDO('mysql:host='.$s.';dbname='.$d, $u, $p);
   
-  $sql = "SELECT * FROM bookmarks where phone like '%$phone_only%'";
+  $sql = "SELECT * FROM bookmarks where phone = '$phone_only'";
   
   $res = $dbh->query($sql);
   file_put_contents("res-mysql.json",serialize($res));
