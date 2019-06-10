@@ -25,7 +25,7 @@ if($incoming["type"] == "image" || $incoming["type"] == "video") {
     
     file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
   
-    $incoming["message_body"] = "[url=http://sa2.com.br/whatsapp_lhc/wapp-LHC-Bridge/"$json_dec->data->msgInfo->url."]IMAGEM[/url]";
+    $incoming["message_body"] = "[url=http://sa2.com.br/whatsapp_lhc/wapp-LHC-Bridge/".$json_dec->data->msgInfo->url."]IMAGEM[/url]";
     // $incoming["message_body"] = __FILE__.$json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
   
     
