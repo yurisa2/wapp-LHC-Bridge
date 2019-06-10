@@ -25,6 +25,8 @@ $dbh = new PDO('mysql:host='.$s.';dbname='.$d, $u, $p);
   
   $res = $dbh->query($sql);
   file_put_contents("res-mysql.json",serialize($res));
+  file_put_contents("res-sql.json",serialize($sql));
+  file_put_contents("res-pdo.json",serialize($dbh));
   
   $lhc = new lhc($config_lhc);
   $lhc->send_msg_lhc($incoming["user_from"],$incoming["user_from"],$incoming["message_body"]);
