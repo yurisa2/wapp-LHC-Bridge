@@ -32,8 +32,12 @@ if($incoming["type"] == "image" || $incoming["type"] == "video") {
 }
 
 if($incoming["type"] == "audio") {
-    $incoming["message_body"] = $json_dec->data->msgInfo->url;
-}
+    $imgs = file_get_contents("https://in.wapi.xyz/".$json_dec->data->msgInfo->url);
+    
+    file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
+  
+    $incoming["message_body"] = "[url=http://sa2.com.br/whatsapp_lhc/wapp-LHC-Bridge/".$json_dec->data->msgInfo->url."]AUDIO[/url]";
+  }
 
 // 
 // echo '<pre>';
