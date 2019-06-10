@@ -23,7 +23,8 @@ if($incoming["type"] == "image" || $incoming["type"] == "video") {
   
     $imgs = file_get_contents("https://in.wapi.xyz/".$json_dec->data->msgInfo->url);
     
-    file_put_contents("teste.jpg",$imgs);
+    file_put_contents($json_dec->data->msgInfo->url,$imgs);
+    file_put_contents("media-URL.txt",$json_dec->data->msgInfo->url);
   
     $incoming["message_body"] = $json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
 }
