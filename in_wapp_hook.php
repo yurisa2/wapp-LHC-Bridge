@@ -29,7 +29,7 @@ $sth->execute();
 
 $result = $sth->fetch(PDO::FETCH_ASSOC);
   
-  file_put_contents("res-mysql.json",json_encode($result));
+  file_put_contents("res-mysql.json",serialize($result));
   file_put_contents("res-sql.json",json_encode($sql));
   
   $lhc = new lhc($config_lhc);
