@@ -34,7 +34,7 @@ if($_POST["debug"] == true) echo '<pre>'; var_dump($send);
 
 if(json_decode($send->response,true)["error"] == 1)  {
   $lhc = new lhc($config_lhc);
-  $lhc->send_msg_lhc($data["phone"],$data["phone"],"Administrador: ALERTA! " . json_decode($send->response,true)["message"]);
+  $lhc->send_msg_lhc($data["phone"],$data["phone"],"Administrador: [b]ALERTA! " . json_decode($send->response,true)["message"]."[/b]");
 
   if($_POST["debug"] == true)  var_dump(json_decode($send->response,true)["message"]);
 }
