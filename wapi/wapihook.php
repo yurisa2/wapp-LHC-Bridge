@@ -25,8 +25,10 @@ if($incoming["type"] == "image" || $incoming["type"] == "video") {
     
     file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
   
-    $incoming["message_body"] = "[url=".__FILE__.$json_dec->data->msgInfo->url]."]IMAGEM ". $json_dec->data->msgInfo->caption . "[/url]";
+    $incoming["message_body"] = "[url=$json_dec->data->msgInfo->url]IMAGEM  $json_dec->data->msgInfo->caption[/url]";
     // $incoming["message_body"] = __FILE__.$json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
+  
+    
 }
 
 if($incoming["type"] == "audio") {
