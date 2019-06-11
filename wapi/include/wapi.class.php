@@ -91,7 +91,7 @@ class wapi {
     
     $params["username"] = $this->username;
     $params["jid"] = $phone;
-    $params["fileName"] = base64_encode($fileName);
+    // $params["fileName"] = base64_encode($fileName);
     $params["fileURL"] = LHC_URL.'/lhc_web/'.$fileURL;
     // $params["caption"] = base64_encode($fileName);
   
