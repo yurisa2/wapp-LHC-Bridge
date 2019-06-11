@@ -92,7 +92,7 @@ class wapi {
     $params["username"] = $this->username;
     $params["jid"] = $phone;
     $params["fileName"] = $fileName;
-    $params["fileURL"] = WS_URL.'/lhc_web/'.$fileURL;
+    $params["fileURL"] = WS_URL.'/lhc_web/'.$fileUrl;
     // $params["caption"] = base64_encode($fileName);
   
   file_put_contents("wapi_filename.txt",$params["fileName"]);
