@@ -91,11 +91,12 @@ class wapi {
     
     $params["username"] = $this->username;
     $params["jid"] = $phone;
-    $params["fileName"] = base64_encode($fileName);
+    $params["fileName"] = $fileName;
     $params["fileURL"] = LHC_URL.'/lhc_web/'.$fileURL;
     // $params["caption"] = base64_encode($fileName);
   
   file_put_contents("wapi_filename.txt",$params["fileName"]);
+  file_put_contents("direto_api.json",json_encode($params));
   
     $result = $this->api->post('sendMediaMessage', json_encode($params), 
     array('Content-Type' => 'application/json'));
