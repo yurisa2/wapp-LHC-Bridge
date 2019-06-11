@@ -67,8 +67,28 @@ class lhc {
       $chat_id = $this->start_new_chat($from_phone,$from_name,$msg);
       
     }
-    
+  
   }  
+  
+  public function get_file_data($id) {
+    $dbh = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
+    $sql = "SELECT * FROM lh_chat_file where id = '$id'";
+      
+    
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+
+    $result = $sth->fetch(PDO::FETCH_ASSOC);
+   
+    $fpath = $result["file_path"].$result["name"];
+    
+    $respo = $result;
+    
+    $respo["fpath"] = $fpath;
+    
+    
+    return $respo;
+  }
 }
 
 

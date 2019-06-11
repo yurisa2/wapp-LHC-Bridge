@@ -5,17 +5,16 @@
 class wapi {
   public function __construct() 
   {
-  
     $this->username = WAPI_USER;
-  
+    
     $this->api = new RestClient([
-    'base_url' => WAPI_URL, 
-  ]);
+      'base_url' => WAPI_URL, 
+    ]);
   }
   
   public function login_wapi() {
     $params["username"] = $this->username;
-
+    
     $result = $this->api->get('sendTextMessage', json_encode($params), 
     array('Content-Type' => 'application/json'));
     
@@ -31,9 +30,9 @@ class wapi {
     // $params["jid"] = $phone."@s.whatsapp.net";
     $params["jid"] = $phone;
     $params["message"] = base64_encode($msg);
-      
-      // var_dump($params);
-  
+    
+    // var_dump($params);
+    
     $result = $this->api->post('sendTextMessage', json_encode($params), 
     array('Content-Type' => 'application/json'));
     //   echo "Depois do POST - RESULT";
@@ -48,10 +47,10 @@ class wapi {
   
   public function process_json_input($json) {
     $json_dec = json_decode($json);
-
+    
     
     $processed["from_me"] = $json_dec->data->FromMe; // USE TO SELECT
-
+    
     $processed["dataType"] = $json_dec->dataType;
     $processed["user_to"] = $json_dec->username;
     $processed["user_from"] = $json_dec->data->RemoteJid;
@@ -59,32 +58,49 @@ class wapi {
     $processed["time"] = $json_dec->data->Timestamp;
     $processed["msgid"] = $json_dec->data->msgId;
     $processed["type"] = $json_dec->data->msgInfo->msgType;
-
+    
     if($processed["type"] == "text") {
-        $processed["message_body"] = $json_dec->data->msgInfo->message;
+      $processed["message_body"] = $json_dec->data->msgInfo->message;
     }
-
+    
     if($processed["type"] == "image" || $processed["type"] == "video") {
       
-        $imgs = file_get_contents(WAPI_URL.$json_dec->data->msgInfo->url);
-        
-        file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
+      $imgs = file_get_contents(WAPI_URL.$json_dec->data->msgInfo->url);
       
-        $processed["message_body"] = "[url=".WS_URL."/wapp-LHC-Bridge/".$json_dec->data->msgInfo->url."]IMAGEM-VIDEO[/url]";
-        // $processed["message_body"] = __FILE__.$json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
+      file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
       
-        
+      $processed["message_body"] = "[url=".WS_URL."/wapp-LHC-Bridge/".$json_dec->data->msgInfo->url."]IMAGEM-VIDEO[/url]";
+      // $processed["message_body"] = __FILE__.$json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
+      
+      
     }
-
+    
     if($processed["type"] == "audio") {
-        $imgs = file_get_contents(WAPI_URL.$json_dec->data->msgInfo->url);
-        
-        file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
+      $imgs = file_get_contents(WAPI_URL.$json_dec->data->msgInfo->url);
       
-        $processed["message_body"] = "[url=".WS_URL."/wapp-LHC-Bridge/".$json_dec->data->msgInfo->url."]AUDIO[/url]";
-      }
-return $processed;
+      file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
+      
+      $processed["message_body"] = "[url=".WS_URL."/wapp-LHC-Bridge/".$json_dec->data->msgInfo->url."]AUDIO[/url]";
+    }
+    return $processed;
   }
+  
+  
+  public function send_media_msg_wapi($phone,$fileUrl,$fileName) {
+    $this->login_wapi();
+    
+    $params["username"] = $this->username;
+    $params["jid"] = $phone;
+    $params["fileName"] = $fileName;
+    $params["fileURL"] = LHC_URL.'/lhc_web/'.$fileURL;
+    $params["caption"] = base64_encode($fileName);
+  
+    $result = $this->api->post('sendMediaMessage', json_encode($params), 
+    array('Content-Type' => 'application/json'));
+  
+    return $result;
+  }
+  
   
 }
 
