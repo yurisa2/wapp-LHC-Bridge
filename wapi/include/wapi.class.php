@@ -93,7 +93,7 @@ class wapi {
     $params["jid"] = $phone;
     $params["fileName"] = $fileName;
     $params["fileURL"] = WS_URL.'/lhc_web/'.$fileUrl;
-    $params["caption"] = base64_encode("Enviado por: ".$from_LHC->msg->name_support);
+    $params["caption"] = base64_encode("Enviado por: ".$op);
   // 
   // file_put_contents("wapi_filename.txt",$params["fileName"]);
   // file_put_contents("direto_api.json",json_encode($params));
