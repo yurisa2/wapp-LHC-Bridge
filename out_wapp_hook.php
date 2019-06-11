@@ -26,6 +26,7 @@ $file_id = $file_id[0];
 $lhc_fp = new lhc;
 $image = $lhc_fp->get_file_data($file_id);
 
+file_put_contents("fpath.txt",$image["fpath"]);
 
 $send = $wapp->send_media_msg_wapi($data["phone"],$image["fpath"],$image["upload_name"]);
 }
