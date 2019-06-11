@@ -93,7 +93,7 @@ class wapi {
     $params["jid"] = $phone;
     $params["fileName"] = base64_encode($fileName);
     $params["fileURL"] = LHC_URL.'/lhc_web/'.$fileURL;
-    $params["caption"] = base64_encode($fileName);
+    // $params["caption"] = base64_encode($fileName);
   
     $result = $this->api->post('sendMediaMessage', json_encode($params), 
     array('Content-Type' => 'application/json'));
