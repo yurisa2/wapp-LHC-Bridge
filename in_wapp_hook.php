@@ -7,8 +7,8 @@ include 'include/include.php';
 $json = file_get_contents('php://input');
 
 // file_put_contents("in.wapp_hook-json.json",$json);
-
-$incoming = process_json_input($json);
+$wapi = new wapi;
+$incoming = $wapi->process_json_input($json);
 
 // file_put_contents("in.wapp_hook-incoming.json",json_encode($incoming));
 
