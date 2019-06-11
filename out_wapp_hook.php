@@ -28,7 +28,7 @@ $image = $lhc_fp->get_file_data($file_id);
 
 file_put_contents("fpath.txt",$image["fpath"]);
 
-$send = $wapp->send_media_msg_wapi($data["phone"],$image["fpath"],$image["name"].$image["upload_name"]);
+$send = $wapp->send_media_msg_wapi($data["phone"],$image["fpath"],$image["name"].$image["upload_name"],$from_LHC->msg->name_support);
 }
 
 

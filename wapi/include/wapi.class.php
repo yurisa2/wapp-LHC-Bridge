@@ -86,18 +86,18 @@ class wapi {
   }
   
   
-  public function send_media_msg_wapi($phone,$fileUrl,$fileName) {
+  public function send_media_msg_wapi($phone,$fileUrl,$fileName,$op) {
     $this->login_wapi();
     
     $params["username"] = $this->username;
     $params["jid"] = $phone;
     $params["fileName"] = $fileName;
     $params["fileURL"] = WS_URL.'/lhc_web/'.$fileUrl;
-    // $params["caption"] = base64_encode($fileName);
-  
-  file_put_contents("wapi_filename.txt",$params["fileName"]);
-  file_put_contents("direto_api.json",json_encode($params));
-  
+    $params["caption"] = base64_encode("Enviado por: ".$from_LHC->msg->name_support);
+  // 
+  // file_put_contents("wapi_filename.txt",$params["fileName"]);
+  // file_put_contents("direto_api.json",json_encode($params));
+  // 
     $result = $this->api->post('sendMediaMessage', json_encode($params), 
     array('Content-Type' => 'application/json'));
   
