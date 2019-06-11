@@ -2,12 +2,9 @@
 
 
 class lhc {
-  public function __construct($config) 
+  public function __construct() 
   {
-    $this->LHCRestAPI = new LHCRestAPI($config["url"], $config["user"], $config["key"]);
-    
-      // var_dump($config);
-    
+    $this->LHCRestAPI = new LHCRestAPI(LHC_URL, LHC_USER, LHC_KEY);
   }
   
   
@@ -16,7 +13,6 @@ class lhc {
     
     $response = $this->LHCRestAPI->execute('chats', array());
     
-    // var_dump($response);
     
     foreach ($response->list as $key => $value) {
       
@@ -24,14 +20,11 @@ class lhc {
       json_decode($value->additional_data)[0]->value == $no
       )
       {
-        // echo $value->id . ' - ' . $value->status . ' - ' . json_decode($value->additional_data)[0]->value;
-        // echo '<br>';
+        
         $retorno = array('id' => $value->id,
         'hash' => $value->hash);
       }
     }
-    // var_dump($no);
-    // print_r($response->list);
     
     return $retorno;
   }
@@ -59,14 +52,12 @@ class lhc {
       'msg' => $msg
     ), array(), 'POST');
     
-    var_dump('send_msg_user-response.json', json_encode($response));
+    // var_dump('send_msg_user-response.json', json_encode($response));
     return $response;
   }
   
   public function send_msg_lhc($from_phone,$from_name,$msg) {
     // Check if there's a openchat, if not, start new
-    
-    
     
     $chat_id = $this->get_chat_data($from_phone)["id"];
     $chat_hash = $this->get_chat_data($from_phone)["hash"];
@@ -74,9 +65,9 @@ class lhc {
     if($chat_id > 0) $this->send_msg_user($chat_id,$chat_hash,$msg);
     else {
       $chat_id = $this->start_new_chat($from_phone,$from_name,$msg);
-    
+      
     }
-        
+    
   }  
 }
 

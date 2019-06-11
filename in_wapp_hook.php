@@ -1,20 +1,18 @@
 <?php
 ini_set('display_errors','on');
 
-include 'lhc/include/lhc.config.php';
-include 'lhc/include/lhrestapi.php';
-include 'lhc/include/lhc.class.php';
+include 'include/include.php';
+
 
 $json = file_get_contents('php://input');
 
 // file_put_contents("in.wapp_hook-json.json",$json);
 
-include 'wapi/wapihook.php';
+$incoming = process_json_input($json);
 
-file_put_contents("in.wapp_hook-incoming.json",json_encode($incoming));
+// file_put_contents("in.wapp_hook-incoming.json",json_encode($incoming));
 
 if($incoming["from_me"] == 0) {  
-  
   
   $arr = explode("@", $incoming["user_from"]);
   $phone_only = $arr[0];  
@@ -33,7 +31,7 @@ if($incoming["from_me"] == 0) {
   
   if($result["name"] == NULL) $result["name"] = "Cliente";
   
-  $lhc = new lhc($config_lhc);
+  $lhc = new lhc;
   $lhc->send_msg_lhc($incoming["user_from"],$result["name"],$incoming["message_body"]);
   
 } 

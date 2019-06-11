@@ -1,0 +1,3 @@
+[submodule "lhc-extensions-bookmarks"]
+	path = lhc-extensions-bookmarks
+	url = ../lhc-extensions-bookmarks.git

@@ -4,8 +4,14 @@ $lhc_url_base = '';
 $lhc_username = "";
 $lhc_api_key = "";
 
-define("LHC_URL",$lhc_url_base);
-define("LHC_USERNAME",$lhc_username);
-define("LHC_KEY",$lhc_api_key);
+$config_lhc = array('url' => $lhc_url_base,
+                'user' => $lhc_username,
+                'key' => $lhc_api_key);
+
+
+$s = ""; //DB HOST
+$d = ""; //DB NAME
+$u = ""; //DB USER
+$p = ""; //DB PASS
 
 ?>

@@ -21,22 +21,22 @@ if($incoming["type"] == "text") {
 
 if($incoming["type"] == "image" || $incoming["type"] == "video") {
   
-    $imgs = file_get_contents("https://in.wapi.xyz/".$json_dec->data->msgInfo->url);
+    $imgs = file_get_contents(WAPI_URL..$json_dec->data->msgInfo->url);
     
     file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
   
-    $incoming["message_body"] = "[url=http://sa2.com.br/whatsapp_lhc/wapp-LHC-Bridge/".$json_dec->data->msgInfo->url."]IMAGEM-VIDEO[/url]";
+    $incoming["message_body"] = "[url=".WS_URL."/wapp-LHC-Bridge/".$json_dec->data->msgInfo->url."]IMAGEM-VIDEO[/url]";
     // $incoming["message_body"] = __FILE__.$json_dec->data->msgInfo->url .' - '. $json_dec->data->msgInfo->caption ;
   
     
 }
 
 if($incoming["type"] == "audio") {
-    $imgs = file_get_contents("https://in.wapi.xyz/".$json_dec->data->msgInfo->url);
+    $imgs = file_get_contents(WAPI_URL.$json_dec->data->msgInfo->url);
     
     file_put_contents("./".$json_dec->data->msgInfo->url,$imgs);
   
-    $incoming["message_body"] = "[url=http://sa2.com.br/whatsapp_lhc/wapp-LHC-Bridge/".$json_dec->data->msgInfo->url."]AUDIO[/url]";
+    $incoming["message_body"] = "[url=".WS_URL."/wapp-LHC-Bridge/".$json_dec->data->msgInfo->url."]AUDIO[/url]";
   }
 
 // 

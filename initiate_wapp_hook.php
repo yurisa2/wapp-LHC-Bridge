@@ -1,16 +1,7 @@
 <?php
 ini_set("display_errors","on");
-include 'wapi/include/wapi.config.php';
-include 'wapi/include/vendor/autoload.php';
-include 'wapi/include/wapi.class.php';
 
-// FOR ERROR REPORTING
-
-include 'lhc/include/lhc.config.php';
-include 'lhc/include/lhrestapi.php';
-include 'lhc/include/lhc.class.php';
-
-
+include 'include/include.php';
 
 $from_phpr = $_POST;
 
@@ -18,7 +9,7 @@ $from_phpr = json_decode($from_phpr['params']);
 
 $phone = $from_phpr->phone."@s.whatsapp.net";
 
-$wapp = new wapi($config_wapi);
+$wapp = new wapi);
 $send = $wapp->send_msg_wapi($phone,$from_phpr->message);
 
 
@@ -39,7 +30,7 @@ if($result["name"] == NULL) $result["name"] = "Cliente";
 
 $message_to_lhc = "[i] Contato iniciado ativamente:  [/i] | Mensagem Inicial: ".$from_phpr->message;
 
-$lhc = new lhc($config_lhc);
+$lhc = new lhc);
 $lhc->send_msg_lhc($phone,$result["name"],$message_to_lhc);
 
 

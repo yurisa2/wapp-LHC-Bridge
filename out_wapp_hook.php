@@ -1,15 +1,5 @@
 <?php
-
-include 'wapi/include/wapi.config.php';
-include 'wapi/include/vendor/autoload.php';
-include 'wapi/include/wapi.class.php';
-
-// FOR ERROR REPORTING
-
-include 'lhc/include/lhc.config.php';
-include 'lhc/include/lhrestapi.php';
-include 'lhc/include/lhc.class.php';
-
+include 'include/include.php';
 
 
 $from_LHC = $_POST;
@@ -40,8 +30,8 @@ if(json_decode($send->response,true)["error"] == 1)  {
 }
 
 
-file_put_contents('wapi_post.json',$_POST);
-file_put_contents('wapi_send.json',serialize($send));
+// file_put_contents('wapi_post.json',$_POST);
+// file_put_contents('wapi_send.json',serialize($send));
 // file_put_contents('wapi_data.json',json_encode($data));
 
 ?>

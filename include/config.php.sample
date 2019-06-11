@@ -1,10 +1,6 @@
 <?php
 
-
-$wapp_in_hook = "";
-$lhc_out_hook = "";
-
-
+$ws_url_base = "";
 
 
 ?>
