@@ -82,7 +82,7 @@ class lhc {
    
     $fpath = $result["file_path"].$result["name"];
     
-    copy($fpath,$fpath.$result["upload_name"]);
+    copy("../lhc_web/".$fpath,"../lhc_web/".$fpath.$result["upload_name"]);
     
     $respo = $result;
     
