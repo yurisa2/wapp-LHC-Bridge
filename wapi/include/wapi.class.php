@@ -95,7 +95,7 @@ class wapi {
     $params["fileURL"] = LHC_URL.'/lhc_web/'.$fileURL;
     // $params["caption"] = base64_encode($fileName);
   
-  file_put_contents($params["fileName"]);
+  file_put_contents("wapi_filename.txt".$params["fileName"]);
   
     $result = $this->api->post('sendMediaMessage', json_encode($params), 
     array('Content-Type' => 'application/json'));
