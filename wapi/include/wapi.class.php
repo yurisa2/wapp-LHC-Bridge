@@ -15,10 +15,7 @@ class wapi {
   public function login_wapi() {
     $params["username"] = $this->username;
     
-    $result = $this->api->get('sendTextMessage', json_encode($params), 
-    array('Content-Type' => 'application/json'));
-    
-    file_put_contents('login_wapi-response.json',serialize($result));
+    file_put_contents('login_wapi-response.json',json_encode(serialize($result)));
     
     return $result;
   }
