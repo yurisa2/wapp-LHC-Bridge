@@ -15,7 +15,7 @@ class wapi {
   public function login_wapi() {
     $params["username"] = $this->username;
     
-    file_put_contents('login_wapi-response.json',json_encode(serialize($result)));
+    file_put_contents('login_wapi-response.json',json_encode($result));
     
     return $result;
   }

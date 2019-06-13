@@ -13,8 +13,5 @@ $response->username = $wapp->username;
 $response = json_encode($response);
 
 echo $response;
-// var_dump($response);
-
-
 
 ?>
