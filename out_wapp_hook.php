@@ -3,6 +3,8 @@ include 'include/include.php';
 
 $from_LHC = $_POST;
 
+file_put_contents("params.json",$from_LHC);
+
 $from_LHC = json_decode($from_LHC['params']);
 
 $data = array();

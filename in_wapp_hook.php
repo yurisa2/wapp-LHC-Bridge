@@ -17,7 +17,7 @@ if($incoming["from_me"] == 0) {
   $arr = explode("@", $incoming["user_from"]);
   $phone_only = $arr[0];  
   
-  $dbh = new PDO('mysql:host='.$s.';dbname='.$d, $u, $p);
+  $dbh = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
   $sql = "SELECT * FROM bookmarks where phone = '$phone_only'";
     
   $sth = $dbh->prepare($sql);

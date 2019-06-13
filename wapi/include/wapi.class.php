@@ -23,8 +23,27 @@ class wapi {
     return $result;
   }
   
+  
+  
+  public function check_online() {
+    $params["username"] = $this->username;
+    
+    $result = $this->api->get('online/'.$params["username"]);
+    // 
+    // $result = json_decode($result);
+    // $result->time = time();
+    // 
+    // $result = json_encode($result);
+    
+    file_put_contents('files_laststatus.json',$result);
+    
+    return $result;
+  }
+  
+  
+  
   public function send_msg_wapi($phone,$msg) {
-    $this->login_wapi();
+    // $this->login_wapi();
     
     $params["username"] = $this->username;
     // $params["jid"] = $phone."@s.whatsapp.net";
@@ -54,7 +73,7 @@ class wapi {
     $processed["dataType"] = $json_dec->dataType;
     $processed["user_to"] = $json_dec->username;
     $processed["user_from"] = $json_dec->data->RemoteJid;
-    $processed["msg_id"] = $json_dec->msgId;
+    $processed["msg_id"] = $json_dec->data->msgId;
     $processed["time"] = $json_dec->data->Timestamp;
     $processed["msgid"] = $json_dec->data->msgId;
     $processed["type"] = $json_dec->data->msgInfo->msgType;
