@@ -24,14 +24,18 @@ class wapi {
   
   public function check_online() {
     $params["username"] = $this->username;
-    
-    $result = $this->api->get('online/'.$params["username"]);
+        
+    $result = $this->api->get('online/'.$params["username"],array(),
+    array(
+          'Authorization' => WAPI_TOKEN
+  ));
     // 
     // $result = json_decode($result);
     // $result->time = time();
     // 
     // $result = json_encode($result);
     
+  
     file_put_contents('files_laststatus.json',$result);
     
     return $result;
@@ -50,7 +54,9 @@ class wapi {
     // var_dump($params);
     
     $result = $this->api->post('sendTextMessage', json_encode($params), 
-    array('Content-Type' => 'application/json'));
+    array('Content-Type' => 'application/json',
+          'Authorization' => WAPI_TOKEN
+  ));
     //   echo "Depois do POST - RESULT";
     // 
     // var_dump($result);
@@ -115,7 +121,9 @@ class wapi {
   // file_put_contents("direto_api.json",json_encode($params));
   // 
     $result = $this->api->post('sendMediaMessage', json_encode($params), 
-    array('Content-Type' => 'application/json'));
+    array('Content-Type' => 'application/json',
+  'Authorization' => WAPI_TOKEN
+));
   
     return $result;
   }
