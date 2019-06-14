@@ -29,7 +29,17 @@ if($incoming["from_me"] == 0) {
   // file_put_contents("res-sql.json",json_encode($sql));
   // file_put_contents("res-name.json",$result["name"]);
   
-  if($result["name"] == NULL) $result["name"] = "Cliente";
+  if($result["name"] == NULL) {
+    $result["name"] = "Cliente";
+    if(!$demo) {
+    $sql = "INSERT INTO bookmarks (phone, name, obs, user) values 
+    ('$phone_only','Cliente Ativo','Entrou em contato espontâneamente','Daray CRM');
+      
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    }
+    if($demo) file_put_contents("files/".time().".json",json_encode(array($phone_only)));
+  }
   
   $lhc = new lhc;
   $lhc->send_msg_lhc($incoming["user_from"],$result["name"],$incoming["message_body"]);
