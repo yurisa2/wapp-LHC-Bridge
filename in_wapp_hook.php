@@ -33,7 +33,7 @@ if($incoming["from_me"] == 0) {
     $result["name"] = "Cliente";
     if(!$demo) {
     $sql = "INSERT INTO bookmarks (phone, name, obs, user) values 
-    ('$phone_only','Cliente Ativo','Entrou em contato espontâneamente','Daray CRM');
+    ('$phone_only','Cliente Ativo','Entrou em contato espontâneamente','Daray CRM')";
       
     $sth = $dbh->prepare($sql);
     $sth->execute();
